@@ -1,2 +1,3 @@
 .idea
 /target
+/src/test/kotlin/com/github/joba/pledger/TestTests.kt
