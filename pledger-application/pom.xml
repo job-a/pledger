@@ -10,7 +10,7 @@
     </parent>
     <artifactId>pledger-application</artifactId>
     <packaging>jar</packaging>
-    <description>Business logic module</description>
+    <description>Spring application module</description>
 
     <dependencies>
         <dependency>
@@ -20,12 +20,17 @@
         </dependency>
         <dependency>
             <groupId>com.github.job-a.pledger</groupId>
+            <artifactId>pledger-services</artifactId>
+            <version>${revision}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.job-a.pledger</groupId>
             <artifactId>pledger-repository</artifactId>
             <version>${revision}</version>
         </dependency>
         <dependency>
             <groupId>com.github.job-a.pledger</groupId>
-            <artifactId>pledger-api</artifactId>
+            <artifactId>pledger-rest-api</artifactId>
             <version>${revision}</version>
         </dependency>
     </dependencies>

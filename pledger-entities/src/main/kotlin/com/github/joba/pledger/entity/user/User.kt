@@ -1,3 +1,3 @@
 package com.github.joba.pledger.entity.user
 
-data class User(val uniqueIdentifier: String, val givenName: String)
+data class User(val authenticatedId: String, val givenName: String)

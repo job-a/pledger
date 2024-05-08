@@ -22,9 +22,10 @@
 	<modules>
 		<module>pledger-application</module>
 		<module>pledger-entities</module>
-		<module>pledger-api</module>
+		<module>pledger-rest-api</module>
 		<module>pledger-repository</module>
-	</modules>
+        <module>pledger-services</module>
+    </modules>
 
 	<dependencies>
 		<dependency>

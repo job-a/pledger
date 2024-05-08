@@ -2,3 +2,29 @@ spring:
   application:
     name: pledger
 
+  datasource:
+    url: ${DATASOURCE_URL}
+    driver-class-name: org.postgresql.Driver
+    username: ${DATASOURCE_USER}
+    password: ${DATASOURCE_PASSWORD}
+
+  jpa:
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    properties:
+      hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
+      hibernate.default_schema: pledger
+    hibernate:
+      ddl-auto: update
+
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: ${OAUTH_GOOGLE_CLIENT_ID}
+            client-secret: ${OAUTH_GOOGLE_CLIENT_SECRET}
+
+logging:
+  level:
+    web: debug
