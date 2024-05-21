@@ -6,5 +6,6 @@ import java.math.BigDecimal
 
 internal interface BalanceJpaRepository : CrudRepository<BalanceItemDAO, Long> {
     fun findAllByUser(user: UserDAO): List<BalanceItemDAO>
+    fun findByUserAndName(user: UserDAO, name: String): BalanceItemDAO?
     fun findByUserAndNameAndCurrentValuation(user: UserDAO, name: String, currentValuation: BigDecimal): BalanceItemDAO?
 }

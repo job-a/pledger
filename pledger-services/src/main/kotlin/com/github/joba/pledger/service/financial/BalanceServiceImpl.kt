@@ -1,6 +1,7 @@
 package com.github.joba.pledger.service.financial
 
 
+import com.github.joba.pledger.entity.exception.NotFoundException
 import com.github.joba.pledger.entity.financial.BalanceItem
 import com.github.joba.pledger.entity.financial.PeriodBalance
 import com.github.joba.pledger.repository.BalanceRepository
@@ -12,8 +13,12 @@ internal class BalanceServiceImpl(private val balanceRepository: BalanceReposito
         return PeriodBalance(emptyList(), emptyList())
     }
 
-    override fun createBalanceItem(balanceItem: BalanceItem): BalanceItem {
+    override fun create(balanceItem: BalanceItem): BalanceItem {
         return balanceRepository.createBalanceItem(balanceItem)
+    }
+
+    override fun read(balanceItem: BalanceItem): BalanceItem {
+        return balanceRepository.readBalanceItem(balanceItem)?: throw NotFoundException("Unknown balance item in request")
     }
 
 }

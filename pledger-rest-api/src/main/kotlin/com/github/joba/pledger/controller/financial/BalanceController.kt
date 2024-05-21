@@ -17,6 +17,6 @@ class BalanceController(private val balanceService: BalanceService) {
 
     @PostMapping(consumes = [APPLICATION_JSON_VALUE], produces = [APPLICATION_JSON_VALUE])
     fun createBalanceItem(@RequestBody balanceItem: BalanceItem): BalanceItem {
-        return balanceService.createBalanceItem(balanceItem)
+        return balanceService.create(balanceItem)
     }
 }

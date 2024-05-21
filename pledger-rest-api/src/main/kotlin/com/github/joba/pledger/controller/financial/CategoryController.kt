@@ -13,7 +13,7 @@ class CategoryController(private val categoryService: CategoryService) {
 
     @GetMapping(produces = [APPLICATION_JSON_VALUE])
     fun getCategory(): List<Category> {
-        return categoryService.getCategories().toList()
+        return categoryService.getAllCategories().toList()
     }
 
 }

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository
 
 @Repository
 internal class CategoryRepositoryImpl(private val categoryJpaRepository: CategoryJpaRepository, private val userRepository: UserRepositoryImpl) : CategoryRepository {
-    override fun getCategories(): Set<Category> {
+    override fun getAllCategories(): Set<Category> {
         return categoryJpaRepository.findAllByUser(userRepository.getCurrentAuthenticatedUser())
             .map { categoryDao -> categoryDao.toCategory() }
             .toSet()

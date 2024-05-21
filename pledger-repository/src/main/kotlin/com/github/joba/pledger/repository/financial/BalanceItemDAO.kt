@@ -13,8 +13,8 @@ internal data class BalanceItemDAO(
     @GeneratedValue @Id val id: Long ?= null,
     val name: String,
     val startingValuation: BigDecimal,
-    val currentValuation: BigDecimal,
-    val description: String,
+    var currentValuation: BigDecimal,
+    var description: String,
     @ManyToOne @JoinColumn(name = "user_id") val user: UserDAO) {
 
     fun toBalanceItem(): BalanceItem {

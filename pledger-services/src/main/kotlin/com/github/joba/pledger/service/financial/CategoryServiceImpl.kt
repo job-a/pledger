@@ -6,11 +6,11 @@ import org.springframework.stereotype.Service
 
 @Service
 internal class CategoryServiceImpl(private val categoryRepository: CategoryRepository) : CategoryService {
-    override fun getCategories(): Set<Category> {
-        return categoryRepository.getCategories()
+    override fun getAllCategories(): Set<Category> {
+        return categoryRepository.getAllCategories()
     }
 
-    override fun createCategory(category: Category): Category {
+    override fun create(category: Category): Category {
         return categoryRepository.createCategory(category)
     }
 }

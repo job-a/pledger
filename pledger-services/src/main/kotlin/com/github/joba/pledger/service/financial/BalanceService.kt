@@ -5,5 +5,6 @@ import com.github.joba.pledger.entity.financial.BalanceItem
 
 sealed interface BalanceService {
     fun getBalance(): PeriodBalance
-    fun createBalanceItem(balanceItem: BalanceItem): BalanceItem
+    fun create(balanceItem: BalanceItem): BalanceItem
+    fun read(balanceItem: BalanceItem): BalanceItem
 }
