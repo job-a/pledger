@@ -1,0 +1,19 @@
+package com.github.joba.pledger.controller.financial
+
+import com.github.joba.pledger.entity.financial.Category
+import com.github.joba.pledger.service.financial.CategoryService
+import org.springframework.http.MediaType.APPLICATION_JSON_VALUE
+import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.RestController
+
+@RestController
+@RequestMapping("/api/category")
+class CategoryController(private val categoryService: CategoryService) {
+
+    @GetMapping(produces = [APPLICATION_JSON_VALUE])
+    fun getCategory(): List<Category> {
+        return categoryService.getCategories().toList()
+    }
+
+}

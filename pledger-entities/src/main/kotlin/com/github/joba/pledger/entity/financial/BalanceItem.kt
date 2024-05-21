@@ -1,4 +1,5 @@
 package com.github.joba.pledger.entity.financial
 
-abstract class BalanceItem(open val name: String, open val worth: Long, open val description: String) {
-}
+import java.math.BigDecimal
+
+data class BalanceItem(val name: String, val startingValuation: BigDecimal, val currentValuation: BigDecimal, val description: String = "")

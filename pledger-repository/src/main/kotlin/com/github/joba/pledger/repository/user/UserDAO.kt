@@ -8,9 +8,9 @@ import jakarta.persistence.Table
 
 @Entity
 @Table(name = "user")
-internal data class UserDAO(@GeneratedValue @Id val id: Long ?= null, val authenticatedId: String, val givenName: String) {
+data class UserDAO(@GeneratedValue @Id val id: Long ?= null, val authenticatedId: String, val givenName: String) {
 
-    fun toUserEntity(): User {
+    fun toUser(): User {
         return User(authenticatedId, givenName)
     }
 
