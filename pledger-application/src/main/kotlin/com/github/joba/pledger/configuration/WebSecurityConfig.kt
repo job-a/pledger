@@ -19,17 +19,10 @@ class WebSecurityConfig {
             oauth2Login {  }
             csrf { disable() }
             authorizeHttpRequests {
-                authorize("/*", "/error", permitAll)
-                authorize(anyRequest, authenticated)
+                authorize("/**", "/error", permitAll)
+                authorize(anyRequest, permitAll)
             }
         }
-//        http.invoke {
-//            authorizeRequests {
-//                authorize("/greetings/**", hasAuthority("ROLE_ADMIN"))
-//                authorize("/**", permitAll)
-//            }
-//            httpBasic {}
-//        }
         return http.build()
     }
 
