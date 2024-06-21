@@ -33,6 +33,11 @@
             <artifactId>pledger-rest-api</artifactId>
             <version>${revision}</version>
         </dependency>
+        <dependency>
+            <groupId>com.github.job-a.pledger</groupId>
+            <artifactId>pledger-frontend</artifactId>
+            <version>${revision}</version>
+        </dependency>
     </dependencies>
 
     <build>

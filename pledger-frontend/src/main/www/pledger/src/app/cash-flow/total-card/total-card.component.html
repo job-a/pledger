@@ -1,0 +1,10 @@
+<div class="card flex justify-content-center h-full">
+  <p-card [header]="title" [subheader]="period" styleClass="h-full">
+    <p class="text-center">{{ amount }}</p>
+    <ng-template pTemplate="footer">
+      <div class="flex gap-3 mt-1">
+        <p-button *ngIf="showButtons" (onClick)="add.emit()" label="Add" class="w-full" styleClass="w-full" />
+      </div>
+    </ng-template>
+  </p-card>
+</div>

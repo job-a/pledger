@@ -1,0 +1,17 @@
+<div class="text-center">
+  <app-period-picker (selectedPeriodChanged)="onSelectedPeriodChanged($event)"></app-period-picker>
+</div>
+<ng-container *ngIf="cashFlowReport$ | async as cashFlowRep">
+  <div class="grid">
+    <div class="col">
+      <app-total-card [title]="'Total income'" [period]="displayPeriod()" [amount]="cashFlowRep.totalIncome" [showButtons]="true"
+                      (add)="addIncome()"></app-total-card>
+    </div>
+    <div class="col">
+      <app-total-card [title]="'Total expenses'" [period]="displayPeriod()" [amount]="cashFlowRep.totalExpense" [showButtons]="true"></app-total-card>
+    </div>
+    <div class="col">
+      <app-total-card [title]="'Total cash flow'" [period]="displayPeriod()" [amount]="cashFlowRep.cashFlow"></app-total-card>
+    </div>
+  </div>
+</ng-container>

@@ -1,0 +1,8 @@
+<div class="block-div">
+  <p-selectButton class="p-3" id="period-select-btn"
+                  [options]="selectButtonOptions"
+                  [unselectable]="true"
+                  (onChange)="onSelectButtonChange($event)"/>
+  <p-button class="pt-3 pb-3" label="&#8592;" id="period-back-btn" (onClick)="onPeriodBack()"/>
+  <p-button class="pt-3 pb-3" label="&#8594;" id="period-forward-btn" (onClick)="onPeriodForward()"/>
+</div>

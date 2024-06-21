@@ -24,6 +24,7 @@
 		<module>pledger-rest-api</module>
 		<module>pledger-repository</module>
         <module>pledger-services</module>
+        <module>pledger-frontend</module>
     </modules>
 
 	<dependencies>
