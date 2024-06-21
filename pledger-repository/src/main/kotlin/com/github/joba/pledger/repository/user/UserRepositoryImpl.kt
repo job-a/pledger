@@ -9,7 +9,7 @@ import org.springframework.security.oauth2.client.authentication.OAuth2Authentic
 import org.springframework.stereotype.Repository
 
 @Repository
-internal class UserRepositoryImpl(private val userJpaRepository: UserJpaRepository): UserRepository {
+internal class UserRepositoryImpl(private val userJpaRepository: UserJpaRepository): UserRepository, AuthenticatedUserRepository {
 
 
     override fun findByAuthenticatedId(authenticatedId: String): User? {
@@ -20,7 +20,7 @@ internal class UserRepositoryImpl(private val userJpaRepository: UserJpaReposito
         return userJpaRepository.save(UserDAO.from(user)).toUser()
     }
 
-    fun getCurrentAuthenticatedUser(): UserDAO {
+    override fun getCurrentAuthenticatedUser(): UserDAO {
         val token = SecurityContextHolder.getContext().authentication as OAuth2AuthenticationToken
         return userJpaRepository.findUserDAOByAuthenticatedId(token.getSubject())?: throw InvalidUserException()
     }
