@@ -5,4 +5,5 @@ import com.github.joba.pledger.entity.financial.Category
 sealed interface CategoryService {
     fun getAllCategories(): Set<Category>
     fun create(category: Category): Category
+    fun createDefaultsForNewUser()
 }
