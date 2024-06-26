@@ -1,11 +1,14 @@
 import { Component, computed, signal } from '@angular/core';
 import { TotalCardComponent } from '../total-card/total-card.component';
-import { TransactionService } from '../../shared/services/transaction.service';
 import { CommonModule } from '@angular/common';
-import { PeriodPickerComponent, SelectedPeriod } from '../../shared/components/period-picker/period-picker.component';
 import { DateTime } from 'luxon';
 import { toObservable } from '@angular/core/rxjs-interop';
 import { switchMap } from 'rxjs';
+import {
+  PeriodPickerComponent,
+  SelectedPeriod
+} from '../../../shared/components/period-picker/period-picker.component';
+import { TransactionService } from '../../../shared/services/transaction.service';
 
 @Component({
   selector: 'app-cash-flow-container',

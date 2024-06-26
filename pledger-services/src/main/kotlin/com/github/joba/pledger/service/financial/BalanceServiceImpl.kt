@@ -14,11 +14,16 @@ internal class BalanceServiceImpl(private val balanceRepository: BalanceReposito
     }
 
     override fun create(balanceItem: BalanceItem): BalanceItem {
-        return balanceRepository.createBalanceItem(balanceItem)
+        val copy = balanceItem.copy(currentValuation = balanceItem.startingValuation)
+        return balanceRepository.createBalanceItem(copy)
     }
 
     override fun read(balanceItem: BalanceItem): BalanceItem {
         return balanceRepository.readBalanceItem(balanceItem)?: throw NotFoundException("Unknown balance item in request")
+    }
+
+    override fun readAllBalanceItems(): List<BalanceItem> {
+        return balanceRepository.readAllBalanceItems()
     }
 
 }

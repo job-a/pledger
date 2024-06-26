@@ -1,1 +1,11 @@
-<app-cash-flow-container></app-cash-flow-container>
+<p-tabView>
+  <p-tabPanel header="Dashboard">
+    <ng-template pTemplate="content"><app-dashboard></app-dashboard></ng-template>
+  </p-tabPanel>
+  <p-tabPanel header="Assets">
+    <ng-template pTemplate="content"><app-balance-item-config-page></app-balance-item-config-page></ng-template>
+  </p-tabPanel>
+  <p-tabPanel header="Categories">
+    <ng-template pTemplate="content">WIP</ng-template>
+  </p-tabPanel>
+</p-tabView>

@@ -1,0 +1,24 @@
+<form [formGroup]="balanceItemForm">
+  <div class="flex align-items-center gap-3 mb-3">
+    <label for="item-name" class="font-semibold w-11rem">Item name: </label>
+    <input pInputText id="item-name" class="flex-auto" autocomplete="off" placeholder="I.e. My Savings Account" formControlName="name"/>
+  </div>
+  <div class="flex align-items-center gap-3 mb-3">
+    <label for="item-description" class="font-semibold w-11rem">Item description: </label>
+    <input pInputText id="item-description" class="flex-auto" autocomplete="off" placeholder="Something recognizable i.e. account number" formControlName="description">
+  </div>
+  <div class="flex align-items-center gap-3 mb-3">
+    <label for="item-starting-valuation" class="font-semibold w-11em">Item valuation at start: </label>
+    <p-inputNumber
+      id="item-starting-valuation"
+      formControlName="startingValuation"
+      mode="currency"
+      inputId="currency-netherlands"
+      currency="EUR"
+      locale="nl-NL" />
+  </div>
+  <div class="flex justify-content-end gap-2">
+    <p-button label="Cancel" severity="secondary" (click)="cancelEvent.emit()" />
+    <p-button label="Save" (click)="save()" />
+  </div>
+</form>

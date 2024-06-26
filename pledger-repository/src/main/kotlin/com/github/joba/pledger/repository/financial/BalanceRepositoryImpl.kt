@@ -8,17 +8,17 @@ import org.springframework.stereotype.Repository
 @Repository
 internal class BalanceRepositoryImpl(private val balanceJpaRepository: BalanceJpaRepository, private val userRepository: AuthenticatedUserRepository): BalanceRepository {
 
-    override fun getAllBalanceItems(): List<BalanceItem> {
-        return balanceJpaRepository.findAllByUser(userRepository.getCurrentAuthenticatedUser())
-            .map { balanceItemDAO -> balanceItemDAO.toBalanceItem() }
-    }
-
     override fun createBalanceItem(balanceItem: BalanceItem): BalanceItem {
         return balanceJpaRepository.save(BalanceItemDAO.from(balanceItem, userRepository.getCurrentAuthenticatedUser())).toBalanceItem()
     }
 
     override fun readBalanceItem(balanceItem: BalanceItem): BalanceItem? {
         return balanceJpaRepository.findByUserAndNameAndCurrentValuation(userRepository.getCurrentAuthenticatedUser(), balanceItem.name, balanceItem.currentValuation)?.toBalanceItem()
+    }
+
+    override fun readAllBalanceItems(): List<BalanceItem> {
+        return balanceJpaRepository.findAllByUser(userRepository.getCurrentAuthenticatedUser())
+            .map { balanceItemDAO -> balanceItemDAO.toBalanceItem() }
     }
 
 }

@@ -1,12 +1,20 @@
 import { Component } from '@angular/core';
-import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { CashFlowContainerComponent } from './cash-flow/cash-flow-container/cash-flow-container.component';
+import { TabViewModule } from 'primeng/tabview';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import {
+  BalanceItemConfigPageComponent
+} from './configuration/balance-item-config-page/balance-item-config-page.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, RouterLink, RouterLinkActive, CashFlowContainerComponent],
+  imports: [
+    CommonModule,
+    TabViewModule,
+    DashboardComponent,
+    BalanceItemConfigPageComponent
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

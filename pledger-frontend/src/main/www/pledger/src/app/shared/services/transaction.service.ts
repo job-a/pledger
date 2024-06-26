@@ -11,7 +11,7 @@ export class TransactionService {
 
   private apiUrl = '/api/transaction'
 
-  constructor(private http: HttpClient) {}
+  constructor(private readonly http: HttpClient) {}
 
   createTransaction(transaction: Transaction): Observable<Transaction> {
     return this.http.post<Transaction>(this.apiUrl, transaction);

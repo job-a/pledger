@@ -7,4 +7,5 @@ sealed interface BalanceService {
     fun getBalanceReport(): BalanceReport
     fun create(balanceItem: BalanceItem): BalanceItem
     fun read(balanceItem: BalanceItem): BalanceItem
+    fun readAllBalanceItems(): List<BalanceItem>
 }
