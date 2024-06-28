@@ -1,0 +1,23 @@
+<ng-container *ngIf="categoryService.getAllCategories() | async as categoryList">
+  <p-table
+    [value]="categoryList">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-category>
+      <tr [pSelectableRow]="category">
+        <td>{{ category.name }}</td>
+        <td>{{ category.type }}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</ng-container>
+<div class="pt-3">
+  <p-button (click)="toggleDialog()" label="Add"></p-button>
+</div>
+<p-dialog *ngIf="showDialog" header="Add or edit your categories" [modal]="true" [(visible)]="showDialog" [style]="{ width: '55rem' }">
+  <app-category-form (cancelEvent)="toggleDialog()" (saveEvent)="addCategory($event)"></app-category-form>
+</p-dialog>

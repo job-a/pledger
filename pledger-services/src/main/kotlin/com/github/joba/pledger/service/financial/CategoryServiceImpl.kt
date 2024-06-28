@@ -17,7 +17,8 @@ internal class CategoryServiceImpl(private val categoryRepository: CategoryRepos
     }
 
     override fun createDefaultsForNewUser() {
-        categoryRepository.createCategory(Category("Others", INCOME))
-        categoryRepository.createCategory(Category("Others", EXPENSE))
+        val other = "Other"
+        categoryRepository.createCategory(Category(other, INCOME))
+        categoryRepository.createCategory(Category(other, EXPENSE))
     }
 }

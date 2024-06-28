@@ -1,4 +1,4 @@
-<ng-container *ngIf="balanceItems | async as items">
+<ng-container *ngIf="balanceService.getAllBalanceItems() | async as items">
   <p-table
     [value]="items"
     selectionMode="single"

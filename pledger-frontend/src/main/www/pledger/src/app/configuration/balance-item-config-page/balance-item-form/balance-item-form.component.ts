@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { BalanceItem } from '../../../shared/model/BalanceItem';
 import { Button } from 'primeng/button';
@@ -12,7 +12,7 @@ import { InputNumberModule } from 'primeng/inputnumber';
   styleUrl: './balance-item-form.component.css'
 })
 export class BalanceItemFormComponent {
-  private defaultBalanceItem: BalanceItem = {name: '', startingValuation: 0, currentValuation: 0, description: ''}
+  private readonly defaultBalanceItem: BalanceItem = {name: '', startingValuation: 0, currentValuation: 0, description: ''}
   balanceItemForm = this.fb.group(this.defaultBalanceItem)
   @Output() cancelEvent = new EventEmitter<void>()
   @Output() saveEvent = new EventEmitter<BalanceItem>()

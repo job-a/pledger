@@ -9,6 +9,7 @@ import {
   SelectedPeriod
 } from '../../../shared/components/period-picker/period-picker.component';
 import { TransactionService } from '../../../shared/services/transaction.service';
+import { CategoryType } from '../../../shared/model/Category';
 
 @Component({
   selector: 'app-cash-flow-container',
@@ -47,7 +48,7 @@ export class CashFlowContainerComponent {
       },
       "category": {
         "name": "Test",
-        "type": "INCOME"
+        "type": CategoryType.INCOME
       }
     }).subscribe()
   }

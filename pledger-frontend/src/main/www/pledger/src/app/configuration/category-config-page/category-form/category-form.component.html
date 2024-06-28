@@ -1,0 +1,17 @@
+<form [formGroup]="categoryForm">
+  <div class="flex align-items-center gap-3 mb-3">
+    <label for="category-name" class="font-semibold w-11rem">Item name: </label>
+    <input pInputText id="category-name" class="flex-auto" autocomplete="off" placeholder="I.e. Groceries" formControlName="name"/>
+  </div>
+  <div class="flex align-items-center gap-3 mb-3">
+    <label for="category-type" class="font-semibold w-11rem">Item description: </label>
+    <p-dropdown id="category-type"
+      [options]="categoryTypes"
+      formControlName="type"
+      placeholder="Select a category type" />
+  </div>
+  <div class="flex justify-content-end gap-2">
+    <p-button label="Cancel" severity="secondary" (click)="cancelEvent.emit()" />
+    <p-button label="Save" (click)="save()" />
+  </div>
+</form>
