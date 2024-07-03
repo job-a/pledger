@@ -1,0 +1,49 @@
+<form [formGroup]="transactionForm">
+  <div class="flex align-items-center gap-3 mb-3" *ngIf="categoriesWithLabels | async as categories">
+    <label for="categories-dropdown" class="font-semibold w-11rem">Category: </label>
+    <p-dropdown id="categories-dropdown"
+                [options]="categories"
+                formControlName="category"
+                optionLabel="displayLabel"
+                placeholder="Which category?" />
+  </div>
+  <div class="flex align-items-center gap-3 mb-3" *ngIf="balanceService.getAllBalanceItems() | async as balanceItems">
+    <label for="balance-item-dropdown" class="font-semibold w-11rem">Asset: </label>
+    <p-dropdown id="balance-item-dropdown"
+                [options]="balanceItems"
+                formControlName="balanceItem"
+                optionLabel="name"
+                placeholder="Which asset?" />
+  </div>
+  <div class="flex align-items-center gap-3 mb-3">
+    <label for="amount" class="font-semibold w-11rem">Amount: </label>
+    <p-inputNumber
+      [showButtons]="true"
+      [min]="0.01"
+      id="amount"
+      formControlName="amount"
+      mode="currency"
+      inputId="currency-netherlands"
+      currency="EUR"
+      locale="nl-NL" />
+  </div>
+  <div class="flex align-items-center gap-3 mb-3">
+    <label for="timestamp" class="font-semibold w-11rem">Transaction date: </label>
+    <p-calendar
+      id="timestamp"
+      formControlName="timestamp"
+      dateFormat="dd/mm/yy"
+      [maxDate]="today"
+      showIcon
+      showButtonBar
+      (onSelect)="onDatePicked($event)" />
+  </div>
+  <div class="flex align-items-center gap-3 mb-3">
+    <label for="transaction-description" class="font-semibold w-11rem">Transaction description: </label>
+    <input pInputText id="transaction-description" class="flex-auto" autocomplete="off" placeholder="I.e. Birthday cake from bakery" formControlName="description">
+  </div>
+  <div class="flex justify-content-end gap-2">
+    <p-button label="Cancel" severity="secondary" (click)="cancelEvent.emit()" />
+    <p-button label="Save" (click)="save()" />
+  </div>
+</form>

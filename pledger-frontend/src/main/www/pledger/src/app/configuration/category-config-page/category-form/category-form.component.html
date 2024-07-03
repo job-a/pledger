@@ -1,10 +1,10 @@
 <form [formGroup]="categoryForm">
   <div class="flex align-items-center gap-3 mb-3">
-    <label for="category-name" class="font-semibold w-11rem">Item name: </label>
+    <label for="category-name" class="font-semibold w-11rem">Category name: </label>
     <input pInputText id="category-name" class="flex-auto" autocomplete="off" placeholder="I.e. Groceries" formControlName="name"/>
   </div>
   <div class="flex align-items-center gap-3 mb-3">
-    <label for="category-type" class="font-semibold w-11rem">Item description: </label>
+    <label for="category-type" class="font-semibold w-11rem">Category type: </label>
     <p-dropdown id="category-type"
       [options]="categoryTypes"
       formControlName="type"

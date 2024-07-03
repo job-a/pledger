@@ -24,7 +24,7 @@ export class BalanceService {
     )
   }
 
-  private refreshState(): void {
+  refreshState(): void {
     this.http.get<BalanceItem[]>(this.apiUrl).subscribe(result => this.balanceItemState.next(result))
   }
 

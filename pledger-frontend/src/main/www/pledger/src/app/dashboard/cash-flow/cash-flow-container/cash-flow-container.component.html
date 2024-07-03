@@ -5,13 +5,17 @@
   <div class="grid">
     <div class="col">
       <app-total-card [title]="'Total income'" [period]="displayPeriod()" [amount]="cashFlowRep.totalIncome" [showButtons]="true"
-                      (add)="addIncome()"></app-total-card>
+                      (add)="toggleTransactionForm()"></app-total-card>
     </div>
     <div class="col">
-      <app-total-card [title]="'Total expenses'" [period]="displayPeriod()" [amount]="cashFlowRep.totalExpense" [showButtons]="true"></app-total-card>
+      <app-total-card [title]="'Total expenses'" [period]="displayPeriod()" [amount]="cashFlowRep.totalExpense" [showButtons]="true"
+                      (add)="toggleTransactionForm()"></app-total-card>
     </div>
     <div class="col">
       <app-total-card [title]="'Total cash flow'" [period]="displayPeriod()" [amount]="cashFlowRep.cashFlow"></app-total-card>
     </div>
   </div>
 </ng-container>
+<p-dialog *ngIf="showTransactionForm" header="Add or edit items on your balance" [modal]="true" [(visible)]="showTransactionForm" [style]="{ width: '55rem', height: '100%' }">
+  <app-transaction-form (cancelEvent)="toggleTransactionForm()" (saveEvent)="saveTransaction($event)"></app-transaction-form>
+</p-dialog>

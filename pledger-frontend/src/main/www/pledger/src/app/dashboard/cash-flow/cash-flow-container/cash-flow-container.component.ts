@@ -9,20 +9,25 @@ import {
   SelectedPeriod
 } from '../../../shared/components/period-picker/period-picker.component';
 import { TransactionService } from '../../../shared/services/transaction.service';
-import { CategoryType } from '../../../shared/model/Category';
+import { DialogModule } from 'primeng/dialog';
+import { TransactionFormComponent } from '../../../forms/transaction-form/transaction-form.component';
+import { Transaction } from '../../../shared/model/Transaction';
 
 @Component({
   selector: 'app-cash-flow-container',
   standalone: true,
   imports: [
     CommonModule,
+    DialogModule,
     TotalCardComponent,
-    PeriodPickerComponent
+    PeriodPickerComponent,
+    TransactionFormComponent
   ],
   templateUrl: './cash-flow-container.component.html',
   styleUrl: './cash-flow-container.component.css'
 })
 export class CashFlowContainerComponent {
+  showTransactionForm = false
   selectedPeriod = signal<SelectedPeriod>({periodStart: DateTime.local(DateTime.now().year), periodEnd: DateTime.local(DateTime.now().year).endOf('year')})
   displayPeriod = computed(() => {return `${this.selectedPeriod().periodStart.toLocaleString()} - ${this.selectedPeriod().periodEnd.toLocaleString()}`})
   cashFlowReport$ = toObservable(this.selectedPeriod).pipe(
@@ -35,22 +40,11 @@ export class CashFlowContainerComponent {
     this.selectedPeriod.set(event)
   }
 
-  addIncome() {
-    this.transactionService.createTransaction({
-      "amount": -100,
-      "description": "AT1",
-      "timestamp": "2024-05-18T12:50:48.422533Z",
-      "balanceItem": {
-        "name": "Bunq spaarrekening",
-        "startingValuation": 10000,
-        "currentValuation": 9200,
-        "description": "NL48 BUNQ 0000.000.000"
-      },
-      "category": {
-        "name": "Test",
-        "type": CategoryType.INCOME
-      }
-    }).subscribe()
+  toggleTransactionForm(): void {
+    this.showTransactionForm = !this.showTransactionForm
   }
 
+  saveTransaction(transaction: Transaction): void {
+    this.transactionService.createTransaction(transaction).subscribe(() => this.toggleTransactionForm())
+  }
 }
